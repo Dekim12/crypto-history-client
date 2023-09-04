@@ -19,9 +19,11 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={inter.className}>
-        <div className='font-family: ui-sans-serif, Roboto; box-border min-h-screen w-full bg-neutral-100 text-base text-slate-800'>
+        <div className=' bg-my-col-3 text-my-col-2 max text-al flex-di w-fullfont-sans box-border flex min-h-screen flex-col'>
           <AppHeader />
-          <main className={'flex flex-col px-5 py-3'}>{children}</main>
+          <main className='f-siz mx-auto flex w-full max-w-5xl flex-col items-center px-5 py-3'>
+            {children}
+          </main>
         </div>
       </body>
     </html>
