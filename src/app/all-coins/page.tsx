@@ -180,7 +180,7 @@ export default function AllCoins() {
 
   return (
     <div className='w-full'>
-      <h1 className='mb-1 text-center text-xl uppercase'>Coins List</h1>
+      <h1 className='mb-2 text-center text-2xl uppercase'>Coins List</h1>
       {coins}
     </div>
   );

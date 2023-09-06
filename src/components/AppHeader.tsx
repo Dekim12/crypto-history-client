@@ -1,10 +1,12 @@
 export default function AppHeader() {
   return (
-    <header className='align-it bg t bg-my-col-1 flex h-12 items-center justify-between px-4 text-neutral-200'>
-      <a className='text-xl font-bold' href='#'>
+    <header className='flex h-14 items-center justify-between bg-my-col-1 pb-1 pl-5 pr-2 text-neutral-200 shadow-lg'>
+      <a className='text-2xl font-bold' href='#'>
         CRPT
       </a>
-      <button className='p-1 text-lg font-medium'>Log Out</button>
+      <button className='btn transition duration-500  ease-out hover:bg-my-col-4 hover:text-my-col-1'>
+        Log Out
+      </button>
     </header>
   );
 }

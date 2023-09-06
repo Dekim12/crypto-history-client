@@ -19,6 +19,9 @@ const config: Config = {
         'my-col-3': '#D8D9DA',
         'my-col-4': '#FFF6E0',
       },
+      fontFamily: {
+        sans: ['var(--font-family-roboto)'],
+      },
     },
   },
   plugins: [],
