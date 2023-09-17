@@ -1,7 +1,9 @@
+import { fetchCoinsList } from '../../api/coins';
 import { CoinItem } from '../../components/allCoins';
-import { coinsList } from '../../data/coinsList';
 
-export default function AllCoins() {
+export default async function AllCoins() {
+  const coinsList = await fetchCoinsList();
+
   const coins = coinsList.map(({ cmc_rank, symbol, name, price, logo }) => (
     <CoinItem
       key={symbol}

@@ -24,8 +24,9 @@ export default function Coin() {
         src={coin.logo}
         width={70}
         height={70}
+        quality={100}
         alt={`${coin.name} logo icon`}
-        className='mb-2 select-none'
+        className='mb-2 h-auto w-auto select-none'
       />
       <h1 className='text-center text-3xl font-medium uppercase tracking-wider'>
         {coin.name} <span className='text-gray-600'>({coin.symbol})</span>

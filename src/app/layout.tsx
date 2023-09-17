@@ -5,6 +5,8 @@ import { AppHeader } from '../components';
 
 import './globals.css';
 
+export const revalidate = 300;
+
 const roboto = Roboto({
   subsets: ['latin'],
   weight: ['400', '500', '700', '900'],
