@@ -1,4 +1,4 @@
-export default function SignIn() {
+export default function SignInPage() {
   return (
     <div>
       <h1>Sign In page</h1>

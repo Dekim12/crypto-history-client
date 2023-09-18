@@ -1,9 +1,8 @@
 import Image from 'next/image';
+import { notFound } from 'next/navigation';
 
-import { coinsList } from '../../data/coinsList';
-import { Coin } from '../../types';
-
-const coin = coinsList[4];
+import { fetchSingleCoinById } from '@/api/coins';
+import { Coin } from '@/types';
 
 const PRICE_HISTORY_ITEMS: Array<{
   period: string;
@@ -17,7 +16,18 @@ const PRICE_HISTORY_ITEMS: Array<{
   { period: '3 Months', priceKey: 'percent_change_90d' },
 ];
 
-export default function Coin() {
+export default async function CoinPage({
+  params,
+}: {
+  params: { coinId: string };
+}) {
+  const { coinId } = params;
+  const coin = await fetchSingleCoinById(coinId);
+
+  if (!coin) {
+    notFound();
+  }
+
   return (
     <>
       <Image
@@ -25,8 +35,9 @@ export default function Coin() {
         width={70}
         height={70}
         quality={100}
+        priority
         alt={`${coin.name} logo icon`}
-        className='mb-2 h-auto w-auto select-none'
+        className='mb-2 h-16 w-auto select-none'
       />
       <h1 className='text-center text-3xl font-medium uppercase tracking-wider'>
         {coin.name} <span className='text-gray-600'>({coin.symbol})</span>

@@ -6,15 +6,17 @@ export default function CoinItem({
   name,
   price,
   logo,
+  id,
 }: {
   rank: number;
   name: string;
   price: string;
   logo: string;
+  id: number;
 }) {
   return (
     <Link
-      href='/coin'
+      href={`/coin/${id}`}
       className='mb-4 flex h-12 w-full transform cursor-pointer items-center justify-between rounded bg-my-col-4 px-3 text-lg shadow-lg transition duration-500 ease-out hover:scale-105 hover:bg-my-col-1 hover:text-my-col-3'
     >
       <div className='mr-1 flex w-1/3 min-w-fit items-center'>
