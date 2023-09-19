@@ -25,9 +25,9 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={`${roboto.variable} font-sans`}>
-        <div className=' max text-al flex-di w-fullfont-sans box-border flex min-h-screen flex-col bg-my-col-3 text-my-col-2'>
+        <div className='box-border flex min-h-screen w-full flex-col bg-my-col-3 font-sans text-lg text-my-col-2'>
           <AppHeader />
-          <main className='f-siz text-al mx-auto flex w-full max-w-5xl flex-col items-center px-5 py-3'>
+          <main className='mx-auto flex w-full max-w-5xl grow flex-col items-center px-5 py-3'>
             {children}
           </main>
         </div>
