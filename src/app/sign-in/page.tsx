@@ -5,7 +5,7 @@ export default function SignInPage() {
     <>
       <h1 className='mb-4 text-2xl uppercase'>Create User</h1>
       <div className='my-3 flex w-full flex-col items-center'>
-        <UserForm />
+        <UserForm btnName='Create' isCreateUser={true} />
       </div>
     </>
   );

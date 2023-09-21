@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Roboto } from 'next/font/google';
 
-import { AppHeader } from '../components';
+import { AppHeader } from '@/components';
 
 import './globals.css';
 

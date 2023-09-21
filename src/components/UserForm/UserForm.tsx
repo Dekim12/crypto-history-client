@@ -1,47 +1,54 @@
 'use client';
 
-import { useState } from 'react';
+import { FormEvent, useCallback, useState } from 'react';
 import { useRouter } from 'next/navigation';
 
-export default function UserForm() {
+import { TextInput } from '..';
+
+interface UserFormParams {
+  btnName: string;
+  isCreateUser: boolean;
+}
+
+export default function UserForm({ btnName, isCreateUser }: UserFormParams) {
+  const router = useRouter();
+
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
-  const router = useRouter();
+
+  const isCreateBtnDisabled =
+    loading || !email || !password || (isCreateUser && !name);
+
+  const onHandleFormSubmit = useCallback(
+    async (e: FormEvent) => {
+      e.preventDefault();
+      // Send request to create user
+      console.log({ name: isCreateUser ? name : null, email, password });
+
+      router.replace('/all-coins');
+    },
+    [email, isCreateUser, name, password, router]
+  );
 
   return (
-    <form className='flex w-1/2 flex-col '>
-      <label className='mb-3 flex flex-col items-center'>
-        <span>Email:</span>
-        <input
-          className='h-9 w-1/2 rounded border border-my-col-1 px-3 text-xl shadow-xl'
-          required
-          type='text'
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-      </label>
-      <label className='mb-3 flex flex-col items-center'>
-        <span>Name:</span>
-        <input
-          className='h-9 w-1/2 rounded border border-my-col-1 px-3 text-xl shadow-xl'
-          required
-          type='text'
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-      </label>
-      <label className='mb-3 flex flex-col items-center'>
-        <span>Password:</span>
-        <input
-          className='h-9 w-1/2 rounded border border-my-col-1 px-3 text-xl shadow-xl'
-          required
-          type='text'
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </label>
+    <form
+      onSubmit={onHandleFormSubmit}
+      className='flex w-full max-w-md flex-col rounded bg-my-col-4 p-6 shadow-lg'
+    >
+      <TextInput label='Email:' value={email} onSetValue={setEmail} />
+      {isCreateUser && (
+        <TextInput label='Name:' value={name} onSetValue={setName} />
+      )}
+      <TextInput label='Password:' value={password} onSetValue={setPassword} />
+
+      <button
+        className='btn mt-2 self-center border border-my-col-1 bg-my-col-1 text-white transition duration-500 ease-out hover:bg-my-col-3 hover:text-my-col-2'
+        disabled={isCreateBtnDisabled}
+      >
+        {btnName}
+      </button>
     </form>
   );
 }

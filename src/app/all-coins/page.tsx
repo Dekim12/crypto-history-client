@@ -1,5 +1,6 @@
+import { CoinItem } from '@/components/allCoins';
+
 import { fetchCoinsList } from '../../api/coins';
-import { CoinItem } from '../../components/allCoins';
 
 export default async function AllCoinsPage() {
   const coinsList = await fetchCoinsList();
