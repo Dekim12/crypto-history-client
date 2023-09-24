@@ -37,11 +37,21 @@ export default function UserForm({ btnName, isCreateUser }: UserFormParams) {
       onSubmit={onHandleFormSubmit}
       className='flex w-full max-w-md flex-col rounded bg-my-col-4 p-6 shadow-lg'
     >
-      <TextInput label='Email:' value={email} onSetValue={setEmail} />
       {isCreateUser && (
-        <TextInput label='Name:' value={name} onSetValue={setName} />
+        <TextInput
+          label='Email:'
+          value={email}
+          onSetValue={setEmail}
+          type='email'
+        />
       )}
-      <TextInput label='Password:' value={password} onSetValue={setPassword} />
+      <TextInput label='Name:' value={name} onSetValue={setName} />
+      <TextInput
+        label='Password:'
+        value={password}
+        onSetValue={setPassword}
+        // type='password'
+      />
 
       <button
         className='btn mt-2 self-center border border-my-col-1 bg-my-col-1 text-white transition duration-500 ease-out hover:bg-my-col-3 hover:text-my-col-2'
