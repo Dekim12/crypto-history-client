@@ -62,7 +62,7 @@ export const validateUserPassword = (password: string): ValidationResult => {
   else if (!regexForLowercaseAndUppercaseCharacter.test(password)) {
     return {
       isValid: false,
-      message: 'Password to contain at least 1 character.',
+      message: 'Password to contain at least 1 letter.',
     };
   } else {
     return {
@@ -84,4 +84,32 @@ export const validateUserEmail = (email: string): ValidationResult => {
       message: null,
     };
   }
+};
+
+export const validateUserCredentials = (
+  name: string,
+  password: string,
+  email: string | undefined
+): ValidationResult => {
+  if (email) {
+    const emailValidationResult = validateUserEmail(email);
+
+    if (!emailValidationResult.isValid) {
+      return emailValidationResult;
+    }
+  }
+
+  const nameValidationResult = validateUserName(name);
+
+  if (!nameValidationResult.isValid) {
+    return nameValidationResult;
+  }
+
+  const passwordValidationResult = validateUserPassword(password);
+
+  if (!passwordValidationResult.isValid) {
+    return passwordValidationResult;
+  }
+
+  return passwordValidationResult;
 };

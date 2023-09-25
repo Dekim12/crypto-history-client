@@ -11,15 +11,11 @@ export default function TextInput({
   onSetValue,
   type,
 }: TextInputProps) {
-  const isValid = false;
-
   return (
     <label className='mb-3 flex flex-col items-center'>
       <span>{label}</span>
       <input
-        className={`h-9 w-3/4 rounded px-3 text-xl shadow-xl ${
-          isValid ? 'border border-my-col-1' : 'border-2 border-red-600'
-        }`}
+        className='h-9 w-3/4 rounded border border-my-col-1 px-3 text-xl shadow-xl'
         required
         type={type ?? 'text'}
         value={value}
